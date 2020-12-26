@@ -14,7 +14,12 @@ import pygame
 root = Tk()
 var = StringVar()
 root.title("Persona_player")
-root.configure(background='darkgreen')
+
+my_pic4 = Image.open("res/G8Sm.gif")
+resize4 = my_pic4.resize((100,100),Image.ANTIALIAS)
+new_pic4 = ImageTk.PhotoImage(my_pic4)
+my_label = Label(root, image=new_pic4)
+my_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 
 songtitle = Label(root, font="Helvetica 12 bold", textvariable=var)
@@ -27,8 +32,10 @@ file_directory = askdirectory()
 os.chdir(file_directory)
 os.getcwd()
 songlist = os.listdir()
+
+
 scroll = Scrollbar(frame1, orient=VERTICAL)
-playlist = Listbox(frame1, yscrollcommand=scroll.set,selectmode=SINGLE,font ="Cambria 14 bold",width=50,height=6,background='greenyellow')
+playlist = Listbox(frame1, yscrollcommand=scroll.set,selectmode=SINGLE,font ="Cambria 14 bold",width=50,height=6)
 scroll.config (command=playlist.yview)
 scroll.pack(side=RIGHT, fill=Y)
 playlist.pack(fill=BOTH,expand=TRUE)
